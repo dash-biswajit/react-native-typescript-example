@@ -1,0 +1,56 @@
+{
+  "name": "InboxApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "tsc": "./node_modules/.bin/tsc",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/react-native-vector-icons": "^4.2.1",
+    "@types/react-redux": "^4.4.47",
+    "react": "16.0.0-alpha.12",
+    "react-dom": "16.0.0-alpha.12",
+    "react-native": "0.46.4",
+    "react-native-vector-icons": "^4.2.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/enzyme": "^2.8.4",
+    "@types/jest": "^20.0.5",
+    "@types/react": "^15.0.39",
+    "@types/react-native": "^0.46.7",
+    "@types/react-test-renderer": "^15.5.2",
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "2.1.0",
+    "enzyme": "^2.9.1",
+    "jest": "20.0.4",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "16.0.0-alpha.12",
+    "ts-jest": "^20.0.7",
+    "typescript": "^2.4.2"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/",
+      "<rootDir>/lib/"
+    ],
+    "cacheDirectory": ".jest/cache"
+  }
+}
