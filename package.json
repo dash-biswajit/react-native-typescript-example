@@ -1,6 +1,6 @@
 {
-  "name": "InboxApp",
-  "version": "0.0.1",
+  "name": "inbox-app",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -10,28 +10,28 @@
     "test": "jest"
   },
   "dependencies": {
-    "@types/react-native-vector-icons": "^4.2.1",
-    "@types/react-redux": "^4.4.47",
-    "react": "16.0.0-alpha.12",
-    "react-dom": "16.0.0-alpha.12",
-    "react-native": "0.46.4",
-    "react-native-vector-icons": "^4.2.0",
+    "react": "16.0.0-beta.3",
+    "react-dom": "16.0.0-beta.3",
+    "react-native": "0.47.1",
+    "react-native-vector-icons": "^4.3.0",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2"
   },
   "devDependencies": {
     "@types/enzyme": "^2.8.4",
-    "@types/jest": "^20.0.5",
-    "@types/react": "^15.0.39",
-    "@types/react-native": "^0.46.7",
+    "@types/jest": "^20.0.6",
+    "@types/react": "^16.0.0",
+    "@types/react-native": "^0.47.0",
+    "@types/react-native-vector-icons": "^4.2.1",
+    "@types/react-redux": "^4.4.47",
     "@types/react-test-renderer": "^15.5.2",
     "babel-jest": "20.0.3",
     "babel-preset-react-native": "2.1.0",
     "enzyme": "^2.9.1",
     "jest": "20.0.4",
     "react-addons-test-utils": "^15.6.0",
-    "react-test-renderer": "16.0.0-alpha.12",
-    "ts-jest": "^20.0.7",
+    "react-test-renderer": "16.0.0-beta.3",
+    "ts-jest": "^20.0.10",
     "typescript": "^2.4.2"
   },
   "jest": {
