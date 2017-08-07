@@ -18,8 +18,10 @@ export interface Props {
   title: string;
   avatar?: string;
 }
+export interface State {
 
-export default class Header extends React.PureComponent<Props, object> {
+}
+export default class Header extends React.PureComponent<Props, State> {
   render() {
     return (
     <View style={styles.header}>

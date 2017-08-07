@@ -11,8 +11,14 @@ import {
   View
 } from 'react-native';
 import Home, {User, Message} from './containers/Home';
+export interface Props {
 
-export default class MyAwesomeProject extends React.Component<object, object> {
+}
+export interface State {
+
+}
+
+export default class MyAwesomeProject extends React.Component<Props, State> {
   render() {
     const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
     return (

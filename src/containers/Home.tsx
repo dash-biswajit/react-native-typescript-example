@@ -24,8 +24,10 @@ export interface Props {
   user: User;
   messages?: Message[];
 }
+export interface State {
 
-export default class Home extends React.PureComponent<Props, object> {
+}
+export default class Home extends React.PureComponent<Props, State> {
   constructor() {
     super();
   }

@@ -10,8 +10,10 @@ export interface Props {
     body?: string;
     avatar?: string;
 }
+export interface State {
 
-export default class InboxItem extends React.PureComponent<Props, object> {
+}
+export default class InboxItem extends React.PureComponent<Props, State> {
   render() {
     const { title, body, avatar } = this.props;
     return (
