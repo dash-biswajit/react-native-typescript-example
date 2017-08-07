@@ -8,21 +8,21 @@ import {
 import InboxItem from '../components/InboxItem';
 
 export interface User {
-  id: Number,
-  fullName: string,
-  avatar?: string
+  id: Number;
+  fullName: string;
+  avatar?: string;
 }
 export interface Message {
-  id: Number,
-  sender: string,
-  title: string,
-  body: string,
-  sent: Date,
-  received: Date
+  id: Number;
+  sender: string;
+  title: string;
+  body: string;
+  sent: Date;
+  received: Date;
 }
 export interface Props {
   user: User;
-  messages?: Array<Message>
+  messages?: Message[];
 }
 
 export default class Home extends React.PureComponent<Props, object> {

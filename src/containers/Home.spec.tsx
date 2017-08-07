@@ -12,7 +12,7 @@ describe('Home tests', () => {
 
     it('renders with user and messages correctly', () => {
       const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
-      const messages: Array<Message> = [
+      const messages: Message[] = [
         {id: 1, sender: 'user 1', title: 'Hello mate', body: 'How are you doing?', sent: new Date(), received: new Date()}
       ];
       const item = enzyme.shallow(<Home user={user} messages={messages} />);

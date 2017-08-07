@@ -16,7 +16,7 @@ import Header from './components/Header';
 export default class MyAwesomeProject extends React.Component<object, object> {
   render() {
     const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
-    const messages: Array<Message> = [
+    const messages: Message[] = [
       {id: 1, sender: 'user 1', title: 'Hello mate', body: 'How are you doing?', sent: new Date(), received: new Date()}
     ];
     return (
@@ -31,8 +31,8 @@ export default class MyAwesomeProject extends React.Component<object, object> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'stretch' 
-  }  
+    alignItems: 'stretch'
+  }
 });
 
 AppRegistry.registerComponent('MyAwesomeProject', () => MyAwesomeProject);

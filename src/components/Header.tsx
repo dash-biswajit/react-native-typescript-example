@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-let {width, height} = Dimensions.get("window");
+let {width, height} = Dimensions.get('window');
 let ItemWidth = width / 3;
 let ItemHeight = ItemWidth * 2 / 11;
 
@@ -30,7 +30,7 @@ export default class Header extends React.PureComponent<Props, object> {
       </View>
       <View style={styles.headerTitle}>
         <Text style={styles.text}>{this.props.title}</Text>
-      </View>      
+      </View>
       <View style={styles.avatar}>
         <Text>{this.props.avatar}</Text>
       </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingRight: 15,
     flexDirection: 'row',
-    justifyContent: 'flex-end'    
+    justifyContent: 'flex-end'
   },
   menuIcon: {
     flex: 1,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingTop: 0,
     paddingRight: 20,
-    alignItems:'center'
+    alignItems: 'center'
   },
   iconSection_back: {
     paddingTop: 21,
@@ -87,6 +87,6 @@ const styles = StyleSheet.create({
   text:{
     fontSize: 15,
     fontWeight: '500',
-    alignItems: 'center'
-  } 
+    alignItems: 'center'
+  }
 });

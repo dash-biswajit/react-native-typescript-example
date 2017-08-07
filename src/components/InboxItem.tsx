@@ -33,5 +33,5 @@ const styles = StyleSheet.create({
     borderColor: '#EEE',
     borderWidth: 1,
     padding: 5
-  },  
+  },
 });
