@@ -8,7 +8,7 @@ At the time of this readme
 ```bash
 brew install node
 brew install watchman
-sudo npm install -g react-native-cli semistandard semistandard-format yarn tslint typescript
+sudo npm install -g react-native-cli semistandard semistandard-format yarn tslint typescript typedoc
 ```
 
 ## Git instructions
@@ -34,4 +34,9 @@ Terminal 3
 npm test
 npm run ios
 npm run android
+```
+
+## Generating documention
+```
+npm run docs
 ```

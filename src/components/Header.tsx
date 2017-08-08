@@ -3,26 +3,51 @@ import {
   View,
   StyleSheet,
   Text,
-  TouchableOpacity,
   Dimensions,
+  TouchableOpacity,
   StatusBar,
   Platform
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+/**
+ * Width and height of the app window
+ */
 let {width, height} = Dimensions.get('window');
+
+/**
+ * Item width. Third of total width
+ */
 let ItemWidth = width / 3;
+
+/**
+ * Item height. 2/11th of the width
+ */
 let ItemHeight = ItemWidth * 2 / 11;
 
+/**
+ * PropTypes definition
+ */
 export interface Props {
   title: string;
   avatar?: string;
 }
+
+/**
+ * State definition
+ */
 export interface State {
 
 }
+
+/**
+ * Header component
+ */
 export default class Header extends React.PureComponent<Props, State> {
-  render() {
+  /**
+   * Render the header with the menubar icon, title and avatar
+   */
+  render(): JSX.Element {
     return (
     <View style={styles.header}>
       <View style={styles.menuIcon}>
@@ -41,12 +66,15 @@ export default class Header extends React.PureComponent<Props, State> {
   }
 }
 
+/**
+ * Default styles
+ */
 const styles = StyleSheet.create({
   header: {
     backgroundColor: '#0033',
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    height: 50,
+    height: 50
   },
   headerTitle: {
     flex: 3,
