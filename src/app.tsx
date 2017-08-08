@@ -40,9 +40,8 @@ export default class App extends React.PureComponent<Props, State> {
         <View style={styles.container}>
           <Header title='InboxApp' avatar='G' />
           <HomeScreen />
-          <Button title='show toast'
-            onPress={() => ToastNativeAndroid.showMe()}
-          />
+          {Platform.OS === 'android' && <Button title='show me' onPress={() => ToastNativeAndroid.showMe()} />}
+          {Platform.OS === 'android' && <Button title='show toast' onPress={() => ToastNativeAndroid.showToast('Hello toast', 100)} />}
         </View>
       </Provider>
     );
