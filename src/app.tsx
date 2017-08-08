@@ -4,8 +4,11 @@ import {
   View,
   Platform
 } from 'react-native';
-import Home, {User, Message} from './containers/Home';
+import HomeScreen from './containers/HomeScreen';
+import {User, Message} from './types';
 import Header from './components/Header';
+import { Provider } from 'react-redux';
+import store from './store';
 
 /**
  * PropTypes definition for the App
@@ -13,6 +16,7 @@ import Header from './components/Header';
 export interface Props {
 
 }
+
 /**
  * State type definition for the App
  */
@@ -29,15 +33,13 @@ export default class App extends React.Component<Props, State> {
    * Render the app with the header and home screen
    */
   render(): JSX.Element {
-    const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
-    const messages: Message[] = [
-      {id: 1, sender: 'user 1', title: 'Hello mate', body: 'How are you doing?', sent: new Date(), received: new Date()}
-    ];
     return (
-      <View style={styles.container}>
-        <Header title='InboxApp' avatar={user.avatar} />
-        <Home user={user} messages={messages} />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Header title='InboxApp' avatar='PS' />
+          <HomeScreen />
+        </View>
+      </Provider>
     );
   }
 }

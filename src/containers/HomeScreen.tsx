@@ -7,60 +7,9 @@ import {
 } from 'react-native';
 import InboxItem from '../components/InboxItem';
 
-/**
- * Interface to represent a user
- */
-export interface User {
-  /**
-   * User id
-   */
-  id: Number;
-
-  /**
-   * Full name (First name <space> Last name)
-   */
-  fullName: string;
-
-  /**
-   * Optional: Url for the avatar
-   */
-  avatar?: string;
-}
-
-/**
- * Interface to represent a message
- */
-export interface Message {
-  /**
-   * Unique id for the message
-   */
-  id: Number;
-
-  /**
-   * Name of the sender
-   */
-  sender: string;
-
-  /**
-   * Title of the message
-   */
-  title: string;
-
-  /**
-   * Message body
-   */
-  body: string;
-
-  /**
-   * Sent date
-   */
-  sent: Date;
-
-  /**
-   * Received date
-   */
-  received: Date;
-}
+import { User, Message, HomeState } from '../types';
+import { HomeScreenAction, fetchUser, fetchMessages } from '../actions';
+import { connect, Dispatch } from 'react-redux';
 
 /**
  * PropTypes definition
@@ -74,7 +23,12 @@ export interface Props {
   /**
    * List of messages
    */
-  messages?: Message[];
+  messages: Message[];
+
+  /**
+   * Redux dispatch method
+   */
+  dispatch: Dispatch<HomeState>;
 }
 
 /**
@@ -87,9 +41,12 @@ export interface State {
 /**
  * Home screen
  */
-export default class Home extends React.PureComponent<Props, State> {
-  constructor() {
-    super();
+export class HomeScreen extends React.PureComponent<Props, State> {
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchUser());
+    dispatch(fetchMessages());
   }
   /**
    * Helper method to render a message as a FlatList item
@@ -113,7 +70,7 @@ export default class Home extends React.PureComponent<Props, State> {
     const { user, messages } = this.props;
     return (
       <View style={styles.container}>
-        <View style={styles.welcomeMessage}><Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome {user.fullName}</Text></View>
+        <View style={styles.welcomeMessage}><Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome {user!.fullName}</Text></View>
         <View style={styles.messages}>
           <FlatList data={messages as Message[]} renderItem={this._renderItem} keyExtractor={this._keyExtractor} />
         </View>
@@ -145,3 +102,12 @@ const styles = StyleSheet.create({
     paddingBottom: 10
   }
 });
+
+export function mapStateToProps({user, messages}: HomeState) {
+  return {
+    user,
+    messages
+  };
+}
+
+export default connect(mapStateToProps)(HomeScreen);

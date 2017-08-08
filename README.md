@@ -1,3 +1,5 @@
+Components with proper documentation and test cases. Uses TypeScript with redux.
+
 ## Node and dependency versions
 At the time of this readme
 - Node 8.2.1
@@ -36,7 +38,7 @@ npm run ios
 npm run android
 ```
 
-## Generating documention
+## Generating documentation
 ```
 npm run docs
 ```

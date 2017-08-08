@@ -4,7 +4,7 @@
             true,
             "array-simple"
         ],
-        "arrow-parens": true,
+        "arrow-parens": false,
         "no-var-keyword": true,
         "no-unused-variable": [
             true,
