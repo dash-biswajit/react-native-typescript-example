@@ -7,9 +7,11 @@ import { Dispatch } from 'react-redux';
  */
 export interface RequestUser {
   type: constants.REQUEST_USER;
+  user?: User;
 }
 export interface FetchUser {
   type: constants.FETCH_USER;
+  user?: User;
 }
 export interface ReceiveUser {
   type: constants.RECEIVE_USER;
@@ -21,13 +23,15 @@ export interface ReceiveUser {
  */
 export interface RequestMessages {
   type: constants.REQUEST_MESSAGES;
+  messages?: Message[];
 }
 export interface FetchMessages {
   type: constants.FETCH_MESSAGES;
+  messages?: Message[];
 }
 export interface ReceiveMessages {
   type: constants.RECEIVE_MESSAGES;
-  messages: Message[]
+  messages: Message[];
 }
 
 /**
@@ -38,7 +42,7 @@ export type HomeScreenAction = RequestUser | FetchUser | ReceiveUser | RequestMe
 export function requestUser(): RequestUser {
   return {
     type: constants.REQUEST_USER
-  }
+  };
 }
 
 /**
@@ -48,20 +52,26 @@ export const fetchUser = () => (dispatch: Dispatch<HomeScreenAction>): Promise<R
   dispatch(requestUser());
   return fetch(constants.FETCH_USER_URL)
     .then(response => response.json())
-    .then(json => dispatch(receiveUser(json)));
-}
+    .then(json => {
+      return dispatch(receiveUser(json));
+    })
+    .catch(e => {
+      console.error(e);
+      return dispatch(receiveUser({}));
+    });
+};
 
 export function receiveUser(data: any): ReceiveUser {
   return {
     type: constants.RECEIVE_USER,
     user: ({id: data.id, fullName: data.fullName, avatar: data.avatar} as User)
-  }
+  };
 }
 
 export function requestMessages(): RequestMessages {
   return {
     type: constants.REQUEST_MESSAGES
-  }
+  };
 }
 
 /**
@@ -71,12 +81,23 @@ export const fetchMessages = () => (dispatch: Dispatch<HomeScreenAction>): Promi
   dispatch(requestMessages());
   return fetch(constants.FETCH_MESSAGES_URL)
     .then(response => response.json())
-    .then(json => dispatch(receiveMessages(json)));
-}
+    .then(json => dispatch(receiveMessages(json)))
+    .catch(e => {
+      console.error(e);
+      return dispatch(receiveMessages({}));
+    });
+};
 
 export function receiveMessages(data: any): ReceiveMessages {
+  console.log(data);
+  let messages: Message[] = [];
+  if (data) {
+    data.forEach((element: any) => {
+      messages.push(element as Message);
+    });
+  }
   return {
     type: constants.RECEIVE_MESSAGES,
-    messages: []
-  }
+    messages
+  };
 }

@@ -25,12 +25,12 @@ export interface Message {
   /**
    * Sent date
    */
-  sent: Date;
+  sent: string;
 
   /**
    * Received date
    */
-  received: Date;
+  received: string;
 }
 
 /**
@@ -60,10 +60,10 @@ export interface HomeState {
   /**
    * App user
    */
-  user: User;
+  user?: User;
 
   /**
    * List of messages
    */
-  messages: Message[];
+  messages?: Message[];
 }

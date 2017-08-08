@@ -1,5 +1,5 @@
 import { HomeScreenAction } from '../actions';
-import { HomeState } from '../types';
+import { HomeState, User, Message } from '../types';
 import * as constants from '../constants';
 import { combineReducers } from 'redux';
 
@@ -8,11 +8,11 @@ import { combineReducers } from 'redux';
  * @param state Home state
  * @param action Allowed home screen actions
  */
-export function user(state: HomeState, action: HomeScreenAction): HomeState {
+export function userState(state: HomeState = {}, action: HomeScreenAction): HomeState {
   switch (action.type) {
     case constants.REQUEST_USER:
     case constants.RECEIVE_USER:
-      return Object.assign({}, { ...state });
+      return { user: action.user };
     default:
       return state;
   }
@@ -23,19 +23,19 @@ export function user(state: HomeState, action: HomeScreenAction): HomeState {
  * @param state Home state
  * @param action Allowed home screen actions
  */
-export function messages(state: HomeState, action: HomeScreenAction): HomeState {
+export function messagesState(state: HomeState = {}, action: HomeScreenAction): HomeState {
   switch (action.type) {
     case constants.REQUEST_MESSAGES:
     case constants.RECEIVE_MESSAGES:
-      return Object.assign({}, { ...state });
+      return { messages: action.messages };
     default:
       return state;
   }
 }
 
 const rootReducer = combineReducers({
-  user,
-  messages
+  userState,
+  messagesState
 });
 
 export default rootReducer;

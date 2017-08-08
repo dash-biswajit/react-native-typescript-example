@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Dimensions,
   FlatList
 } from 'react-native';
 import InboxItem from '../components/InboxItem';
@@ -10,6 +11,11 @@ import InboxItem from '../components/InboxItem';
 import { User, Message, HomeState } from '../types';
 import { HomeScreenAction, fetchUser, fetchMessages } from '../actions';
 import { connect, Dispatch } from 'react-redux';
+
+/**
+ * Width and height of the app window
+ */
+let {width, height} = Dimensions.get('window');
 
 /**
  * PropTypes definition
@@ -48,6 +54,7 @@ export class HomeScreen extends React.PureComponent<Props, State> {
     dispatch(fetchUser());
     dispatch(fetchMessages());
   }
+
   /**
    * Helper method to render a message as a FlatList item
    */
@@ -68,6 +75,9 @@ export class HomeScreen extends React.PureComponent<Props, State> {
    */
   render(): JSX.Element {
     const { user, messages } = this.props;
+    if (!user) {
+      return <Text>Loading</Text>;
+    }
     return (
       <View style={styles.container}>
         <View style={styles.welcomeMessage}><Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome {user!.fullName}</Text></View>
@@ -99,15 +109,18 @@ const styles = StyleSheet.create({
    */
   messages: {
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
+    maxHeight: (height - 220)
   }
 });
 
-export function mapStateToProps({user, messages}: HomeState) {
-  return {
-    user,
-    messages
+export function mapStateToProps(allState: any) {
+  const { userState, messagesState } = allState;
+  const newState = {
+    user: userState.user,
+    messages: messagesState.messages
   };
+  return newState;
 }
 
 export default connect(mapStateToProps)(HomeScreen);

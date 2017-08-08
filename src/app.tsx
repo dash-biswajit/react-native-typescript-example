@@ -27,7 +27,7 @@ export interface State {
 /**
  * Main app class. Renders the home screen with the header.
  */
-export default class App extends React.Component<Props, State> {
+export default class App extends React.PureComponent<Props, State> {
 
   /**
    * Render the app with the header and home screen
@@ -36,7 +36,7 @@ export default class App extends React.Component<Props, State> {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <Header title='InboxApp' avatar='PS' />
+          <Header title='InboxApp' avatar='G' />
           <HomeScreen />
         </View>
       </Provider>

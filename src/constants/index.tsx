@@ -1,8 +1,14 @@
 /**
  * Default avatar text
  */
+import { Platform } from 'react-native';
+const host: string = Platform.OS === 'ios' ? 'localhost' : '10.0.2.2';
+
 export const DEFAULT_AVATAR = 'A';
 export type DEFAULT_AVATAR = typeof DEFAULT_AVATAR;
+
+export const DEFAULT_USER = {id: -1, fullName: 'Guest', avatar: 'G'};
+export type DEFAULT_USER = typeof DEFAULT_USER;
 
 /**
  * Fetch user related constants
@@ -13,7 +19,7 @@ export const FETCH_USER = 'FETCH_USER';
 export type FETCH_USER = typeof FETCH_USER;
 export const RECEIVE_USER = 'RECEIVE_USER';
 export type RECEIVE_USER = typeof RECEIVE_USER;
-export const FETCH_USER_URL = '../__tests__/data/user.json';
+export const FETCH_USER_URL = 'http://' + host + ':8081/src/__tests__/data/user.json';
 export type FETCH_USER_URL = typeof FETCH_USER_URL;
 
 /**
@@ -25,5 +31,5 @@ export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export type FETCH_MESSAGES = typeof FETCH_MESSAGES;
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export type RECEIVE_MESSAGES = typeof RECEIVE_MESSAGES;
-export const FETCH_MESSAGES_URL = '../__tests__/data/messages.json';
+export const FETCH_MESSAGES_URL = 'http://' + host + ':8081/src/__tests__/data/messages.json';
 export type FETCH_MESSAGES_URL = typeof FETCH_MESSAGES_URL;
