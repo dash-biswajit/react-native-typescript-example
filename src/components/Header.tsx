@@ -29,7 +29,14 @@ let ItemHeight = ItemWidth * 2 / 11;
  * PropTypes definition
  */
 export interface Props {
+  /**
+   * Header title
+   */
   title: string;
+
+  /**
+   * Optional: User avatar url.
+   */
   avatar?: string;
 }
 

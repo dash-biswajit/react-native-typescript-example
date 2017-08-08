@@ -9,9 +9,20 @@ import {
  * PropTypes definition
  */
 export interface Props {
-    title: string;
-    body?: string;
-    avatar?: string;
+  /**
+   * Message title
+   */
+  title: string;
+
+  /**
+   * Body
+   */
+  body?: string;
+
+  /**
+   * Sender avatar url
+   */
+  avatar?: string;
 }
 
 /**

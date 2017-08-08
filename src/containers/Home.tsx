@@ -66,7 +66,14 @@ export interface Message {
  * PropTypes definition
  */
 export interface Props {
+  /**
+   * App user
+   */
   user: User;
+
+  /**
+   * List of messages
+   */
   messages?: Message[];
 }
 
