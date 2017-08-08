@@ -2,13 +2,15 @@ import * as React from 'react';
 import {
   StyleSheet,
   View,
-  Platform
+  Platform,
+  Button
 } from 'react-native';
 import HomeScreen from './containers/HomeScreen';
 import {User, Message} from './types';
 import Header from './components/Header';
 import { Provider } from 'react-redux';
 import store from './store';
+import ToastNativeAndroid from './components/ToastNativeAndroid';
 
 /**
  * PropTypes definition for the App
@@ -38,6 +40,9 @@ export default class App extends React.PureComponent<Props, State> {
         <View style={styles.container}>
           <Header title='InboxApp' avatar='G' />
           <HomeScreen />
+          <Button title='show toast'
+            onPress={() => ToastNativeAndroid.showMe()}
+          />
         </View>
       </Provider>
     );
