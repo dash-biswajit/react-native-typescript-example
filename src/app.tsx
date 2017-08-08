@@ -2,10 +2,12 @@ import * as React from 'react';
 import {
   StyleSheet,
   View,
-  Platform
+  Platform,
+  Button
 } from 'react-native';
-import Home, {User, Message} from './containers/Home';
+import Home, { User, Message } from './containers/Home';
 import Header from './components/Header';
+import ToastNativeAndroid from './components/ToastNativeAndroid';
 
 /**
  * PropTypes definition for the App
@@ -29,14 +31,18 @@ export default class App extends React.Component<Props, State> {
    * Render the app with the header and home screen
    */
   render(): JSX.Element {
-    const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
+    const user: User = { id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS' };
     const messages: Message[] = [
-      {id: 1, sender: 'user 1', title: 'Hello mate', body: 'How are you doing?', sent: new Date(), received: new Date()}
+      { id: 1, sender: 'user 1', title: 'Hello mate', body: 'How 232 are you doing?', sent: new Date(), received: new Date() }
     ];
+
     return (
       <View style={styles.container}>
         <Header title='InboxApp' avatar={user.avatar} />
         <Home user={user} messages={messages} />
+        <Button title="show toast"
+          onPress={() => ToastNativeAndroid.showMe()} 
+        />
       </View>
     );
   }
