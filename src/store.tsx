@@ -5,11 +5,21 @@ import rootReducer from './reducers';
 import { HomeState } from './types';
 
 /**
- * Logger middleware
+ * List of middlewares for redux
  */
-const loggerMiddleware: Middleware = createLogger();
+let middlewares: Middleware[] = [thunkMiddleware];
 
+/**
+ * Add logger middleware in dev
+ */
+if (__DEV__) {
+  /**
+   * Logger middleware
+   */
+  const loggerMiddleware: Middleware = createLogger();
+  middlewares.push(loggerMiddleware);
+}
 const store = createStore(rootReducer,
-  applyMiddleware(thunkMiddleware, loggerMiddleware)
+  applyMiddleware(...middlewares)
 );
 export default store;

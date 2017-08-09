@@ -14,7 +14,7 @@ export interface FetchUser {
   user?: User;
 }
 export interface ReceiveUser {
-  type: constants.RECEIVE_USER;
+  type: constants.RECEIVE_USER | constants.RECEIVE_USER_ERROR;
   user: User;
 }
 
@@ -30,7 +30,7 @@ export interface FetchMessages {
   messages?: Message[];
 }
 export interface ReceiveMessages {
-  type: constants.RECEIVE_MESSAGES;
+  type: constants.RECEIVE_MESSAGES | constants.RECEIVE_MESSAGES_ERROR;
   messages: Message[];
 }
 
@@ -53,15 +53,21 @@ export const fetchUser = () => (dispatch: Dispatch<HomeScreenAction>): Promise<R
   return fetch(constants.FETCH_USER_URL)
     .then(response => response.json())
     .then(json => {
-      return dispatch(receiveUser(json));
+      return dispatch(receiveUser(json, false));
     })
     .catch(e => {
       console.error(e);
-      return dispatch(receiveUser({}));
+      return dispatch(receiveUser({}, true));
     });
 };
 
-export function receiveUser(data: any): ReceiveUser {
+export function receiveUser(data: any, isError: boolean): ReceiveUser {
+  if (isError) {
+    return {
+      type: constants.RECEIVE_USER_ERROR,
+      user: data as User
+    }
+  }
   return {
     type: constants.RECEIVE_USER,
     user: ({id: data.id, fullName: data.fullName, avatar: data.avatar} as User)
@@ -81,15 +87,20 @@ export const fetchMessages = () => (dispatch: Dispatch<HomeScreenAction>): Promi
   dispatch(requestMessages());
   return fetch(constants.FETCH_MESSAGES_URL)
     .then(response => response.json())
-    .then(json => dispatch(receiveMessages(json)))
+    .then(json => dispatch(receiveMessages(json, false)))
     .catch(e => {
       console.error(e);
-      return dispatch(receiveMessages({}));
+      return dispatch(receiveMessages([], true));
     });
 };
 
-export function receiveMessages(data: any): ReceiveMessages {
-  console.log(data);
+export function receiveMessages(data: any, isError: boolean): ReceiveMessages {
+  if (isError) {
+    return {
+      type: constants.RECEIVE_MESSAGES_ERROR,
+      messages: data
+    }
+  }
   let messages: Message[] = [];
   if (data) {
     data.forEach((element: any) => {
