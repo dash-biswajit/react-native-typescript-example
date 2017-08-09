@@ -46,14 +46,13 @@ export default class App extends React.PureComponent<Props, State> {
   }
 
   buildScreenSpecText = () => {
-    UIAndroidNativeModule.getScreenSize(this.testCallback);
+    if (Platform.OS === 'android') {
+      UIAndroidNativeModule.getScreenSize(this.testCallback);
+    }
   }
 
   testCallback(density: string, densityDpi: string, height: string, width: string) {
-    this.setState({ density });
-    this.setState({ densityDpi });
-    this.setState({ height });
-    this.setState({ width });
+    this.setState({ density, densityDpi, height, width });
   }
 
   /**
@@ -69,7 +68,7 @@ export default class App extends React.PureComponent<Props, State> {
       <Provider store={store}>
         <View style={styles.container}>
           <Header title='InboxApp' avatar='G' />
-          <Text>>Native UI density: {density} dpi: {densityDpi} height: {height} width: {width}</Text>
+          {Platform.OS === 'android' && <Text>>Native UI density: {density} dpi: {densityDpi} height: {height} width: {width}</Text>}
           <HomeScreen />
           {Platform.OS === 'android' && <Button title='show me' onPress={() => ToastAndroidNativeModule.showMe()} />}
           {Platform.OS === 'android' && <Button title='show toast' onPress={() => ToastAndroidNativeModule.showToast('Hello toast', ToastAndroidNativeModule.LONG)} />}
