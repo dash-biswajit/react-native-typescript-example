@@ -1,4 +1,4 @@
-package com.myawesomeproject.module.toast;
+package com.myawesomeproject.module.ui;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -12,14 +12,14 @@ import java.util.List;
 /**
  * Copyright (c) 2016 DigitasLBi. All rights reserved.
  *
- * Created on 08/08/2017.
+ * Created on 09/08/2017.
  */
-public class ToastPackage implements ReactPackage {
+public class UIPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(final ReactApplicationContext reactContext) {
         final List<NativeModule> nativeModules = new ArrayList<>();
-        nativeModules.add(new ToastAndroidNativeModule(reactContext));
+        nativeModules.add(new UIAndroidNativeModule(reactContext));
         return nativeModules;
     }
 

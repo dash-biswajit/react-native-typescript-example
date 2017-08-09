@@ -15,9 +15,9 @@ import java.util.Map;
  *
  * Created on 08/08/2017.
  */
-public class ToastNativeAndroid extends ReactContextBaseJavaModule {
+public class ToastAndroidNativeModule extends ReactContextBaseJavaModule {
 
-    private static final String MODULE_NAME = "ToastNativeAndroid";
+    private static final String NAME = "ToastAndroidNativeModule";
     private static final String CONSTANT_SHORT = "SHORT";
     private static final String CONSTANT_LONG = "LONG";
     private static final Map<String, Object> CONSTANTS = new HashMap<>();
@@ -27,13 +27,13 @@ public class ToastNativeAndroid extends ReactContextBaseJavaModule {
         CONSTANTS.put(CONSTANT_LONG, Toast.LENGTH_LONG);
     }
 
-    public ToastNativeAndroid(final ReactApplicationContext reactContext) {
+    public ToastAndroidNativeModule(final ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     @Override
     public String getName() {
-        return MODULE_NAME;
+        return NAME;
     }
 
     @Nullable

@@ -3,14 +3,16 @@ import {
   StyleSheet,
   View,
   Platform,
-  Button
+  Button,
+  Text
 } from 'react-native';
 import HomeScreen from './containers/HomeScreen';
-import {User, Message} from './types';
+import { User, Message } from './types';
 import Header from './components/Header';
 import { Provider } from 'react-redux';
 import store from './store';
-import ToastNativeAndroid from './components/ToastNativeAndroid';
+import ToastAndroidNativeModule from './components/ToastNativeAndroid';
+import UIAndroidNativeModule from './components/UIAndroidNativeModule';
 
 /**
  * PropTypes definition for the App
@@ -23,7 +25,10 @@ export interface Props {
  * State type definition for the App
  */
 export interface State {
-
+  density: string;
+  densityDpi: string;
+  height: string;
+  width: string;
 }
 
 /**
@@ -31,22 +36,49 @@ export interface State {
  */
 export default class App extends React.PureComponent<Props, State> {
 
+  constructor() {
+    super();
+    this.testCallback = this.testCallback.bind(this);
+    this.state = { density: '', densityDpi: '', height: '', width: '' };
+  }
+  componentWillMount() {
+    this.buildScreenSpecText();
+  }
+
+  buildScreenSpecText = () => {
+    UIAndroidNativeModule.getScreenSize(this.testCallback);
+  }
+
+  testCallback(density: string, densityDpi: string, height: string, width: string) {
+    this.setState({ density });
+    this.setState({ densityDpi });
+    this.setState({ height });
+    this.setState({ width });
+  }
+
   /**
    * Render the app with the header and home screen
    */
   render(): JSX.Element {
+    const { density } = this.state;
+    const { densityDpi } = this.state;
+    const { height } = this.state;
+    const { width } = this.state;
+
     return (
       <Provider store={store}>
         <View style={styles.container}>
           <Header title='InboxApp' avatar='G' />
+          <Text>>Native UI density: {density} dpi: {densityDpi} height: {height} width: {width}</Text>
           <HomeScreen />
-          {Platform.OS === 'android' && <Button title='show me' onPress={() => ToastNativeAndroid.showMe()} />}
-          {Platform.OS === 'android' && <Button title='show toast' onPress={() => ToastNativeAndroid.showToast('Hello toast', 100)} />}
+          {Platform.OS === 'android' && <Button title='show me' onPress={() => ToastAndroidNativeModule.showMe()} />}
+          {Platform.OS === 'android' && <Button title='show toast' onPress={() => ToastAndroidNativeModule.showToast('Hello toast', ToastAndroidNativeModule.LONG)} />}
         </View>
       </Provider>
     );
   }
 }
+
 
 /**
  * Default styles
