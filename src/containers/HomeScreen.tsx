@@ -11,6 +11,7 @@ import InboxItem from '../components/InboxItem';
 import { User, Message, HomeState } from '../types';
 import { HomeScreenAction, fetchUser, fetchMessages } from '../actions';
 import { connect, Dispatch } from 'react-redux';
+import * as constants from '../constants';
 
 /**
  * Width and height of the app window
@@ -49,6 +50,9 @@ export interface State {
  */
 export class HomeScreen extends React.PureComponent<Props, State> {
 
+  /**
+   * Fetch the user and messages after mount
+   */
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchUser());
@@ -114,11 +118,11 @@ const styles = StyleSheet.create({
   }
 });
 
-export function mapStateToProps(allState: any) {
+export function mapStateToProps(allState: any): HomeState {
   const { userState, messagesState } = allState;
   const newState = {
-    user: userState.user,
-    messages: messagesState.messages
+    user: userState ? userState.user : constants.DEFAULT_USER,
+    messages: messagesState ? messagesState.messages : []
   };
   return newState;
 }

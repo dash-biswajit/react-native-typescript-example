@@ -19,7 +19,9 @@ export const FETCH_USER = 'FETCH_USER';
 export type FETCH_USER = typeof FETCH_USER;
 export const RECEIVE_USER = 'RECEIVE_USER';
 export type RECEIVE_USER = typeof RECEIVE_USER;
-export const FETCH_USER_URL = 'http://' + host + ':8081/src/__tests__/data/user.json';
+export const RECEIVE_USER_ERROR = 'RECEIVE_USER_ERROR';
+export type RECEIVE_USER_ERROR = typeof RECEIVE_USER_ERROR;
+export const FETCH_USER_URL = 'http://' + host + ':8081/src/test/data/user.json';
 export type FETCH_USER_URL = typeof FETCH_USER_URL;
 
 /**
@@ -31,5 +33,7 @@ export const FETCH_MESSAGES = 'FETCH_MESSAGES';
 export type FETCH_MESSAGES = typeof FETCH_MESSAGES;
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export type RECEIVE_MESSAGES = typeof RECEIVE_MESSAGES;
-export const FETCH_MESSAGES_URL = 'http://' + host + ':8081/src/__tests__/data/messages.json';
+export const RECEIVE_MESSAGES_ERROR = 'RECEIVE_MESSAGES_ERROR';
+export type RECEIVE_MESSAGES_ERROR = typeof RECEIVE_MESSAGES_ERROR;
+export const FETCH_MESSAGES_URL = 'http://' + host + ':8081/src/test/data/messages.json';
 export type FETCH_MESSAGES_URL = typeof FETCH_MESSAGES_URL;

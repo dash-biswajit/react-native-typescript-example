@@ -1,23 +1,51 @@
 import * as React from 'react';
-import * as enzyme from 'enzyme';
-import { Text } from 'react-native';
-import HomeScreen from './HomeScreen';
-import { User, Message } from '../types';
-/*
-describe('Home tests', () => {
-    it('renders with just user correctly', () => {
-      const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
-      const item = enzyme.shallow(<Home user={user} />);
-      expect(item.find(Text).render().text()).toEqual('Welcome Prabhu Subramanian');
-    });
+import { Text, View } from 'react-native';
+import 'isomorphic-fetch';
+import * as sinon from 'sinon';
+import * as renderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
 
-    it('renders with user and messages correctly', () => {
-      const user: User = {id: 1000, fullName: 'Prabhu Subramanian', avatar: 'PS'};
-      const messages: Message[] = [
-        {id: 1, sender: 'user 1', title: 'Hello mate', body: 'How are you doing?', sent: new Date(), received: new Date()}
-      ];
-      const item = enzyme.shallow(<Home user={user} messages={messages} />);
-      expect(item.find(Text).render().text()).toEqual('Welcome Prabhu Subramanian');
-    });
+import mockStore from '../test/MockStore';
+import realStore from '../store';
+import HomeScreen from './HomeScreen';
+import { User, Message, HomeState } from '../types';
+import * as constants from '../constants';
+import { fetchUser, fetchMessages } from '../test/mockActions';
+
+const initialState = {user: null, messages: null};
+const mockStoreObj = mockStore(initialState);
+const expectedActions = [ { type: constants.REQUEST_USER }, { type: constants.REQUEST_MESSAGES } ];
+
+describe('Home tests', () => {
+
+  beforeEach(() => {
+    // Clear the actions before each test
+    mockStoreObj.clearActions();
+  });
+
+  it('invokes componentDidMount upon mount', () => {
+    sinon.spy(HomeScreen.prototype, 'componentDidMount');
+    const screen = renderer.create(<Provider store={mockStoreObj}><HomeScreen /></Provider>);
+    expect(HomeScreen.prototype.componentDidMount.calledOnce).toEqual(true);
+    expect(mockStoreObj.getActions()).toEqual(expectedActions);
+    expect(mockStoreObj.getState()).toEqual(initialState);
+  });
+
+  it('invoking fetchUser correctly adds to actions', () => {
+    const screen = renderer.create(<Provider store={mockStoreObj}><HomeScreen /></Provider>);
+    expect(fetchUser).not.toHaveBeenCalled();
+    mockStoreObj.dispatch(fetchUser());
+    expect(fetchUser).toHaveBeenCalled();
+    expect(mockStoreObj.getActions().length).toEqual(3);
+  });
+
+  it('renders the screen correctly', () => {
+    const screen = renderer.create(<Provider store={realStore}><HomeScreen /></Provider>);
+    const screenJson = screen.toJSON();
+    expect(screenJson.children).not.toBeNull;
+    if (screenJson.children && screenJson.children.length) {
+      expect(screenJson.children.length).toEqual(1);
+      expect(screenJson.children[0]).toEqual('Loading');
+    }
+  });
 });
-*/

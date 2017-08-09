@@ -1,4 +1,8 @@
-Components with proper documentation and test cases. Uses TypeScript with redux.
+Components with proper documentation and *test cases*. Uses TypeScript with redux. I love writing tests and TDD. Some of the tests demonstrated in this project.
+
+- Unit tests for all components
+- Unit tests for redux reducers and store
+- Integration test for the containers (screens)
 
 ## Node and dependency versions
 At the time of this readme
