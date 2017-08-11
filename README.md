@@ -49,3 +49,14 @@ npm run android
 ```
 npm run docs
 ```
+
+## Continuous integration
+
+We have special scripts for continuous integration for testing and creating documentation.
+
+```
+npm run tsc:ci
+npm run test:ci
+npm run docs
+```
+

@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "tsc": "./node_modules/.bin/tsc",
+    "tsc": "./node_modules/.bin/tsc -w",
+    "tsc:ci": "./node_modules/.bin/tsc",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest --env=jsdom --watchAll",
+    "test:ci": "jest --env=jsdom --coverage",
     "docs": "typedoc --options typedoc.json --out docs src/"
   },
   "dependencies": {
