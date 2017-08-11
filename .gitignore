@@ -61,3 +61,6 @@ lib/
 .jest/
 
 docs/
+coverage/
+.vscode/
+android/app/bin
