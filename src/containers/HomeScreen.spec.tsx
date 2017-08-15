@@ -10,7 +10,7 @@ import realStore from '../store';
 import HomeScreen from './HomeScreen';
 import { User, Message, HomeState } from '../types';
 import * as constants from '../constants';
-import { fetchUser, fetchMessages } from '../test/mockActions';
+import { fetchUser, fetchMessages } from '../test/MockActions';
 
 const initialState = {user: null, messages: null};
 const mockStoreObj = mockStore(initialState);
