@@ -1,14 +1,14 @@
-language: node_js
-node_js:
-  - "stable"
-before_install:
-    - npm install -g tslint typescript typedoc 
-script:
-    - npm run tsc:ci
-    - npm run test:ci
-    - npm run docs
 matrix:
   include:
+    - language: node_js
+        node_js:
+            - "stable"
+        before_install:
+            - npm install -g tslint rnpm typescript typedoc 
+        script:
+            - npm run tsc:ci
+            - npm run test:ci
+            - npm run docs
     - language: android
       os: linux
       jdk: oraclejdk8
