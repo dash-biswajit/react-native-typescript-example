@@ -19,7 +19,7 @@ matrix:
       sudo: required
       node_js: false
       before_install:
-        - nvm install 6
+        - nvm install 7
         - node --version
         - travis_retry curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
         - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -29,7 +29,7 @@ matrix:
         - yarn
       android:
         components:
-          - build-tools-25.0.1
+          - build-tools-25.0.2
           - android-25
           - extra-android-m2repository
           - extra-google-google_play_services
@@ -37,4 +37,22 @@ matrix:
           - addon-google_apis-google-16
       script:
         - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
+    - language: objective-c
+      os: osx
+      osx_image: xcode8.3
+      node_js: false
+      before_install:
+        - nvm install 7
+        - node --version
+        - travis_retry npm install -g yarn
+        - yarn -version
+      install:
+        - travis_retry gem install xcpretty
+        - travis_retry yarn
+      xcode_project: ios/BritishGas.xcworkspace
+      xcode_scheme: ios/BritishGas
+      script:
+        - cd ios
+        - xcodebuild -scheme BritishGas -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+        - travis_retry xctool run-tests -scheme BritishGas -sdk iphonesimulator -launch-timeout 90  ONLY_ACTIVE_ARCH=NO
   
