@@ -15,7 +15,7 @@ matrix:
         - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
         - travis_retry sudo apt-get update -qq
         - travis_retry sudo apt-get install -y -qq yarn
-        - cp -r licenses/. $ANDROID_HOME/licenses
+        - cp -r android/licenses/. $ANDROID_HOME/licenses
       install:
         - yarn
       android:
