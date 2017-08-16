@@ -32,3 +32,6 @@ matrix:
         - npm run test:ci
         - npm run docs
         - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
+      before_deploy:
+        - cd app/build/outputs/apk/
+        - ls -lart
