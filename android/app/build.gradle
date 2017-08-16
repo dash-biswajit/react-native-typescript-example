@@ -109,7 +109,7 @@ android {
     }
 	signingConfigs {
 		release {
-		  storeFile file(keystore)
+		  storeFile file(keystore_file)
 		  storePassword(keystore_password)
 		  keyAlias(keystore_alias)
 		  keyPassword(keystore_alias_password)
