@@ -16,10 +16,8 @@ matrix:
         - travis_retry sudo apt-get update -qq
         - travis_retry sudo apt-get install -y -qq yarn
         - cp -r android/licenses/. $ANDROID_HOME/licenses
+        - npm install -g tslint typescript typedoc 
       install:
-        - npm run tsc:ci
-        - npm run test:ci
-        - npm run docs
         - yarn
       android:
         components:
@@ -30,4 +28,7 @@ matrix:
           - extra-google-m2repository
           - addon-google_apis-google-16
       script:
+        - npm run tsc:ci
+        - npm run test:ci
+        - npm run docs
         - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
