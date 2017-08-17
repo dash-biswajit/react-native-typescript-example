@@ -20,7 +20,8 @@ matrix:
         - npm run docs
         - cd ios
         - pwd
-        - xcodebuild -scheme MyAwesomeProject -exportArchive -archivePath ./build/Products/MyAwesomeProject.xcarchive   -exportPath ./build/Products/IPA -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+        - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+        - xcodebuild -exportArchive -exportOptionsPlist ./scripts/exportOptions.plist -archivePath MyAwesomeProject.xcarchive -exportPath ./
         - pwd
         - ls -lart
         - find . -name "*.app"
