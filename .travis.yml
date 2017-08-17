@@ -19,7 +19,7 @@ matrix:
         - npm run test:ci
         - npm run docs
         - cd ios
-        - zip MyAwesomeProject.zip Users/travis/Library/Developer/Xcode/DerivedData/MyAwesomeProject-ebhqxvazeukrmoedieauaanekckp/Build/Products/Debug-iphonesimulator/MyAwesomeProject.app
         - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+        - cd /Users/travis/build
         - find . -name "*.*"
  
