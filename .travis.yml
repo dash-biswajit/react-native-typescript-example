@@ -21,7 +21,7 @@ matrix:
         - cd ios
         - pwd
         - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-        - xcodebuild -exportArchive -exportOptionsPlist ./scripts/exportOptions.plist -archivePath MyAwesomeProject.xcarchive -exportPath ./
+        - xcodebuild -exportArchive -exportOptionsPlist ../scripts/exportOptions.plist -archivePath MyAwesomeProject.xcarchive -exportPath ./
         - pwd
         - ls -lart
         - find . -name "*.app"
