@@ -31,9 +31,9 @@ matrix:
         - npm run tsc:ci
         - npm run test:ci
         - npm run docs
-        - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
-        - ls -lart app/build/outputs/apk/
-        - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@app/build/outputs/apk/app-release.apk" -F "platform=android"
+  #      - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
+  #      - ls -lart app/build/outputs/apk/
+  #      - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@app/build/outputs/apk/app-release.apk" -F "platform=android"
     - language: objective-c
       os: osx
       osx_image: xcode8.3
@@ -46,10 +46,10 @@ matrix:
       install:
         - travis_retry gem install xcpretty
         - travis_retry yarn
-      xcode_project: ios/BritishGas.xcworkspace
-      xcode_scheme: ios/BritishGas
+      xcode_project: ios/MyAwesomeProject.xcworkspace
+      xcode_scheme: ios/MyAwesomeProject
       script:
         - cd ios
-        - xcodebuild -scheme BritishGas -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+        - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
       notifications:
         slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY  
