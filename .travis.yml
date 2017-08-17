@@ -15,8 +15,11 @@ matrix:
       xcode_project: ios/MyAwesomeProject.xcworkspace
       xcode_scheme: ios/MyAwesomeProject
       script:
+        - npm run tsc:ci
+        - npm run test:ci
+        - npm run docs
         - cd ios
         - zip MyAwesomeProject.zip Users/travis/Library/Developer/Xcode/DerivedData/MyAwesomeProject-ebhqxvazeukrmoedieauaanekckp/Build/Products/Debug-iphonesimulator/MyAwesomeProject.app
         - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-        - ls -lart /Users/travis/build
+        - find . -name "*.*"
  
