@@ -23,6 +23,7 @@ matrix:
         - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
         - pwd
         - ls -lart
-        - cd /Users/travis/build
+        - find . -name "*.app"
+        - find . -name "*.app.dSYM"
         - zip -r -9 "MyAwesomeProject.app.dSYM.zip" "MyAwesomeProject.app.dSYM"
         - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@MyAwesomeProject.app.dSYM.zip" -F "platform=ios"
