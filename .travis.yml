@@ -18,5 +18,5 @@ matrix:
         - cd ios
         - zip MyAwesomeProject.zip Users/travis/Library/Developer/Xcode/DerivedData/MyAwesomeProject-ebhqxvazeukrmoedieauaanekckp/Build/Products/Debug-iphonesimulator/MyAwesomeProject.app
         - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-        - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@MyAwesomeProject.zip" -F "platform=ios"
+        - ls -lart /Users/travis/build
  
