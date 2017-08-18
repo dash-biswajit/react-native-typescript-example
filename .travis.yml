@@ -23,7 +23,8 @@ matrix:
         - xcodebuild -scheme MyAwesomeProject -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
         - xcodebuild -exportArchive -exportOptionsPlist ../scripts/exportOptions.plist -archivePath MyAwesomeProject.xcarchive -exportPath ./
         - pwd
-        - ls -lart
+        - cd /Users/travis/Library/Developer/Xcode/DerivedData/MyAwesomeProject-*/Build/Products/Debug-iphonesimulator
+        - ls -lart 
         - find . -name "*.app"
         - find . -name "*.app.dSYM"
         - zip -r -9 "MyAwesomeProject.app.dSYM.zip" "MyAwesomeProject.app.dSYM"
