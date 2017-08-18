@@ -28,4 +28,4 @@ matrix:
         - find . -name "*.app"
         - find . -name "*.app.dSYM"
         - zip -r -9 "MyAwesomeProject.app.zip" "MyAwesomeProject.app"
-        - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@MyAwesomeProject.app.dSYM.zip" -F "platform=ios"
+        - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@MyAwesomeProject.app.zip" -F "platform=ios"
