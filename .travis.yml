@@ -24,8 +24,5 @@ matrix:
         - xcodebuild -exportArchive -exportOptionsPlist ../scripts/exportOptions.plist -archivePath MyAwesomeProject.xcarchive -exportPath ./
         - pwd
         - cd /Users/travis/Library/Developer/Xcode/DerivedData/MyAwesomeProject-*/Build/Products/Debug-iphonesimulator
-        - ls -lart 
-        - find . -name "*.app"
-        - find . -name "*.app.dSYM"
         - zip -r -9 "MyAwesomeProject.app.zip" "MyAwesomeProject.app"
-        - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps -F "file=@MyAwesomeProject.app.zip" -F "platform=ios"
+        - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps/vup017aabxtgeky5qx1w93qr44 -F "file=@MyAwesomeProject.app.zip" -F "platform=ios"
