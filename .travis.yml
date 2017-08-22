@@ -28,13 +28,6 @@ matrix:
       - extra-google-google_play_services
       - extra-google-m2repository
       - addon-google_apis-google-16
-    script:
-    - npm run tsc:ci
-    - npm run test:ci
-    - npm run docs
-    - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
-    - ls -lart app/build/outputs/apk/
-    - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps/b2wntrn1at31r7ndmek8yqp524 -F "file=@app/build/outputs/apk/app-release.apk" -F "platform=android"
     # travis CLI generated 
     deploy:
       provider: releases
@@ -46,5 +39,13 @@ matrix:
         tags: true
         all_branches: true
       file_glob: "true"
-      skip_cleanup: true  
+      skip_cleanup: true   
+    script:
+    - npm run tsc:ci
+    - npm run test:ci
+    - npm run docs
+    - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
+    - ls -lart app/build/outputs/apk/
+    - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps/b2wntrn1at31r7ndmek8yqp524 -F "file=@app/build/outputs/apk/app-release.apk" -F "platform=android"
+     
   
