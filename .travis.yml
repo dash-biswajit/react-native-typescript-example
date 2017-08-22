@@ -30,12 +30,10 @@ matrix:
       - addon-google_apis-google-16
     script:
     - npm run tsc:ci
-    #- npm run test:ci
-    #- npm run docs
     - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
     - ls -lart app/build/outputs/apk/
     - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps/b2wntrn1at31r7ndmek8yqp524 -F "file=@app/build/outputs/apk/app-release.apk" -F "platform=android"
-    # travis CLI generated 
+    # travis CLI generated
     deploy:
       provider: releases
       api_key:
