@@ -44,6 +44,7 @@ matrix:
       on:
         repo: dash-biswajit/react-native-typescript-example
         tags: true
-        file_glob: "true"
+        all_branches: true
+      file_glob: "true"
       skip_cleanup: true  
   
