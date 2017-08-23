@@ -35,17 +35,16 @@ matrix:
         - ls -lart app/build/outputs/apk/
 notifications:
   slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY
-deploy:
-  provider: releases
-  api_key:
+  deploy:
+    provider: releases
+    api_key:
     secure: aatWV0mwWiRzlGn8ZwAW0ivAO4Wbm2MP+TMgeQ/ZH/uJEgnF0Wm2dGdm9qc01ta0yd/yEsKr5nu2ksu+RdklA1vAsgwLfUOpNkTS4QSCXAnI9GASeyhqLaSUjf1zeDRp0iho3TLY+opotohlZMrJJn8i7HeNs2IhGHwav+QyopicAdSNLDXYYe/bOZ+1J/qxvOTDv4HLkdsfbFUzbU2/umKp7hND8/3tnqCUhBe330XyVHAIFr3yvzJ4Sz4rqeQRe9XkmKQyBTQPNQu9WwD16spctyKOx8C2sb5/MJisjhHNJFife8UyyMXd6ELW5zILDKjLGq+lo0F1fHP35zEj4rVSDdpSAmoxAGKB4aS6fq6ocJg2Ms8s4BQOQYkZw5UohXWlPDoe/8YI4392WnIqqH3Y3aiHBnkueREr8HvRPt7AHsL/Q8WaCdiEiZ/2lmBQ7RfpOOwf8pzvu/ATzsoK7P6dFm9uLNq6dn2Bz6y2lFI8DhV2oVnEdSkyDoIDLvemn+TJ1CoGEsSe3FxDgi42vebqwkTlXbdIV36rrer32LYLjKYiObQioFpYR+yq0iZNTgq6o2fJbDTifbhipI66QodgW/24YFWCe4LU4PWJbwCqwQZaz0DCK+i9RJpcBrp0xZ1ZS/Vso3w4A5K3145jyZ4rzLdiIRdG/vO/Z6YBfK8=
-  file: 
-    - "app/build/outputs/apk/app-release.apk"
-  
-  file_glob: "true"
-  skip_cleanup: true   
-  on:
-    branch: master
-    repo: dash-biswajit/react-native-typescript-example
-    tags: true  
+    file: 
+      - "app/build/outputs/apk/app-release.apk"  
+    file_glob: "true"
+    skip_cleanup: true   
+    on:
+      branch: master
+      repo: dash-biswajit/react-native-typescript-example
+      tags: true  
   
