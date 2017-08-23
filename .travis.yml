@@ -1,49 +1,37 @@
 matrix:
   include:
-  - language: android
-    os: linux
-    jdk: oraclejdk8
-    before_cache:
-    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-    - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-    sudo: required
-    node_js: false
-    before_install:
-    - nvm install 7
-    - node --version
-    - travis_retry curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key
-      add -
-    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - travis_retry sudo apt-get update -qq
-    - travis_retry sudo apt-get install -y -qq yarn
-    - cp -r android/licenses/. $ANDROID_HOME/licenses
-    - npm install -g tslint typescript typedoc
-    install:
-    - yarn
-    android:
-      components:
-      - build-tools-25.0.2
-      - android-25
-      - extra-android-m2repository
-      - extra-google-google_play_services
-      - extra-google-m2repository
-      - addon-google_apis-google-16
-    script:
-    - npm run tsc:ci
-    - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
-    - ls -lart app/build/outputs/apk/
-    notifications:
-      slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY
-    deploy:
-      provider: releases
-      api_key:
-        secure: aatWV0mwWiRzlGn8ZwAW0ivAO4Wbm2MP+TMgeQ/ZH/uJEgnF0Wm2dGdm9qc01ta0yd/yEsKr5nu2ksu+RdklA1vAsgwLfUOpNkTS4QSCXAnI9GASeyhqLaSUjf1zeDRp0iho3TLY+opotohlZMrJJn8i7HeNs2IhGHwav+QyopicAdSNLDXYYe/bOZ+1J/qxvOTDv4HLkdsfbFUzbU2/umKp7hND8/3tnqCUhBe330XyVHAIFr3yvzJ4Sz4rqeQRe9XkmKQyBTQPNQu9WwD16spctyKOx8C2sb5/MJisjhHNJFife8UyyMXd6ELW5zILDKjLGq+lo0F1fHP35zEj4rVSDdpSAmoxAGKB4aS6fq6ocJg2Ms8s4BQOQYkZw5UohXWlPDoe/8YI4392WnIqqH3Y3aiHBnkueREr8HvRPt7AHsL/Q8WaCdiEiZ/2lmBQ7RfpOOwf8pzvu/ATzsoK7P6dFm9uLNq6dn2Bz6y2lFI8DhV2oVnEdSkyDoIDLvemn+TJ1CoGEsSe3FxDgi42vebqwkTlXbdIV36rrer32LYLjKYiObQioFpYR+yq0iZNTgq6o2fJbDTifbhipI66QodgW/24YFWCe4LU4PWJbwCqwQZaz0DCK+i9RJpcBrp0xZ1ZS/Vso3w4A5K3145jyZ4rzLdiIRdG/vO/Z6YBfK8=
-      file: 
-        - "app/build/outputs/apk/app-release.apk"
-      on:
-        branch: master
-        repo: dash-biswajit/react-native-typescript-example
-        tags: true
-      file_glob: "true"
-      skip_cleanup: true    
-  
+    - language: android
+      os: linux
+      jdk: oraclejdk8
+      before_cache:
+        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+      sudo: required
+      node_js: false
+      before_install:
+        - nvm install 7
+        - node --version
+        - travis_retry curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+        - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        - travis_retry sudo apt-get update -qq
+        - travis_retry sudo apt-get install -y -qq yarn
+        - cp -r android/licenses/. $ANDROID_HOME/licenses
+        - npm install -g tslint typescript typedoc 
+      install:
+        - yarn
+      android:
+        components:
+          - build-tools-25.0.2
+          - android-25
+          - extra-android-m2repository
+          - extra-google-google_play_services
+          - extra-google-m2repository
+          - addon-google_apis-google-16
+      script:
+        - npm run tsc:ci
+        - npm run test:ci
+        - npm run docs
+        - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
+        - ls -lart app/build/outputs/apk/
+      notifications:
+        slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY 
