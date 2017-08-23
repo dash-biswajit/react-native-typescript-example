@@ -32,7 +32,7 @@ matrix:
     - npm run tsc:ci
     - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
     - ls -lart app/build/outputs/apk/
-  notifications:
+    notifications:
       slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY
     deploy:
       provider: releases
