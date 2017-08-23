@@ -32,7 +32,8 @@ matrix:
     - npm run tsc:ci
     - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
     - ls -lart app/build/outputs/apk/
-    - curl https://tok_qy99b6dbtmjruqqbpb54gxh1qr@api.appetize.io/v1/apps/b2wntrn1at31r7ndmek8yqp524 -F "file=@app/build/outputs/apk/app-release.apk" -F "platform=android"
+  notifications:
+      slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY
     deploy:
       provider: releases
       api_key:
