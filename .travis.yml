@@ -33,5 +33,5 @@ matrix:
         - npm run docs
         - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
         - ls -lart app/build/outputs/apk/
-      notifications:
-        slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY 
+notifications:
+  slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY 
