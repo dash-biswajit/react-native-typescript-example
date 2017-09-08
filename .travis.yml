@@ -3,6 +3,11 @@ matrix:
     - language: android
       os: linux
       jdk: oraclejdk8
+      addons:
+        sonarcloud:
+          organization: "sonarsource"
+          token:
+            secure: IwveMgIEPRZV7fKnbKt16jARrAtz+HFrRSHIZpJTjH5rJ1z7Q1wkm9ph3A8SUCcomsKUxxiI4s70qtdAnYsQfEMouLvUvO+KzOCB5OrYXq2AyxARmGck4vZuGkReRaI0UGJ6A7NxvKz7ArpdpfgzpuKJsZL3yDDDk2igdqxZjr9X3Mpt1nRKT88yNnQU/5mwoXoKVA3QFMTahZ02FXZ14P2oXtW9MDLg4rOIDjm9vMX+8G/8Wxv5YW6v4PQTdznk76sPVlpQxywnXsf5Qag8r8iy42ZPAII9NJUIUBRv06Kk9qEjf3RaGd+1X/5NU6TUUL3+w0Mq0PAIilKxdOmkTdSdsAj196bFsKoZ2CmQKLTObVluI20LMC3+2yAiw9X+Qt8t2UMlfgn1/roBsRF+YtMJnpfCJk73TD4tjjS8cMxeaMn1T3Se9Dk3oh2XQ1rATIhk7vPrChPbqSISVZGIuIwv44DWs+Uqw5OlntKm7DP6nlVZWrpqhVBzKNxOb7//ARFqBB9ukjdao7yJeynx5lAUGMoUCUsIyqdvdduG7Lojdt2vJYDJ7rOOs9ZR6x8AQW2kTG7Wm6EuKocQYhCUGopExxljDk7aRmwXaJcO/SGVdsclaFCzA447TUDxw2VZdfytyB54ttHqmIk5+hX53d5h45ny4/dAqH/yafyu3gE= 
       before_cache:
         - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
         - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -31,20 +36,8 @@ matrix:
         - npm run tsc:ci
         - npm run test:ci
         - npm run docs
-        - cd android && ./gradlew assembleDebug && ./gradlew assembleRelease
-        - ls -lart app/build/outputs/apk/
+        - 
 notifications:
   slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY
-  deploy:
-    provider: releases
-    api_key:
-    secure: aatWV0mwWiRzlGn8ZwAW0ivAO4Wbm2MP+TMgeQ/ZH/uJEgnF0Wm2dGdm9qc01ta0yd/yEsKr5nu2ksu+RdklA1vAsgwLfUOpNkTS4QSCXAnI9GASeyhqLaSUjf1zeDRp0iho3TLY+opotohlZMrJJn8i7HeNs2IhGHwav+QyopicAdSNLDXYYe/bOZ+1J/qxvOTDv4HLkdsfbFUzbU2/umKp7hND8/3tnqCUhBe330XyVHAIFr3yvzJ4Sz4rqeQRe9XkmKQyBTQPNQu9WwD16spctyKOx8C2sb5/MJisjhHNJFife8UyyMXd6ELW5zILDKjLGq+lo0F1fHP35zEj4rVSDdpSAmoxAGKB4aS6fq6ocJg2Ms8s4BQOQYkZw5UohXWlPDoe/8YI4392WnIqqH3Y3aiHBnkueREr8HvRPt7AHsL/Q8WaCdiEiZ/2lmBQ7RfpOOwf8pzvu/ATzsoK7P6dFm9uLNq6dn2Bz6y2lFI8DhV2oVnEdSkyDoIDLvemn+TJ1CoGEsSe3FxDgi42vebqwkTlXbdIV36rrer32LYLjKYiObQioFpYR+yq0iZNTgq6o2fJbDTifbhipI66QodgW/24YFWCe4LU4PWJbwCqwQZaz0DCK+i9RJpcBrp0xZ1ZS/Vso3w4A5K3145jyZ4rzLdiIRdG/vO/Z6YBfK8=
-    file: 
-      - "app/build/outputs/apk/app-release.apk"  
-    file_glob: "true"
-    skip_cleanup: true   
-    on:
-      branch: master
-      repo: dash-biswajit/react-native-typescript-example
-      tags: true  
+    
   
