@@ -5,36 +5,12 @@ matrix:
       jdk: oraclejdk8
       addons:
         sonarcloud:
-          organization: "sonarsource"
+          organization: "Biswajit Dash"
           token:
             secure: IwveMgIEPRZV7fKnbKt16jARrAtz+HFrRSHIZpJTjH5rJ1z7Q1wkm9ph3A8SUCcomsKUxxiI4s70qtdAnYsQfEMouLvUvO+KzOCB5OrYXq2AyxARmGck4vZuGkReRaI0UGJ6A7NxvKz7ArpdpfgzpuKJsZL3yDDDk2igdqxZjr9X3Mpt1nRKT88yNnQU/5mwoXoKVA3QFMTahZ02FXZ14P2oXtW9MDLg4rOIDjm9vMX+8G/8Wxv5YW6v4PQTdznk76sPVlpQxywnXsf5Qag8r8iy42ZPAII9NJUIUBRv06Kk9qEjf3RaGd+1X/5NU6TUUL3+w0Mq0PAIilKxdOmkTdSdsAj196bFsKoZ2CmQKLTObVluI20LMC3+2yAiw9X+Qt8t2UMlfgn1/roBsRF+YtMJnpfCJk73TD4tjjS8cMxeaMn1T3Se9Dk3oh2XQ1rATIhk7vPrChPbqSISVZGIuIwv44DWs+Uqw5OlntKm7DP6nlVZWrpqhVBzKNxOb7//ARFqBB9ukjdao7yJeynx5lAUGMoUCUsIyqdvdduG7Lojdt2vJYDJ7rOOs9ZR6x8AQW2kTG7Wm6EuKocQYhCUGopExxljDk7aRmwXaJcO/SGVdsclaFCzA447TUDxw2VZdfytyB54ttHqmIk5+hX53d5h45ny4/dAqH/yafyu3gE= 
-      before_cache:
-        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
       sudo: required
       node_js: false
-      before_install:
-        - nvm install 7
-        - node --version
-        - travis_retry curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-        - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-        - travis_retry sudo apt-get update -qq
-        - travis_retry sudo apt-get install -y -qq yarn
-        - cp -r android/licenses/. $ANDROID_HOME/licenses
-        - npm install -g tslint typescript typedoc 
-      install:
-        - yarn
-      android:
-        components:
-          - build-tools-25.0.2
-          - android-25
-          - extra-android-m2repository
-          - extra-google-google_play_services
-          - extra-google-m2repository
-          - addon-google_apis-google-16
       script:
         - sonar-scanner
-notifications:
-  slack: britishgasapp:R2pfdHMeBoHpHbPeFxtNjFyY
     
   
